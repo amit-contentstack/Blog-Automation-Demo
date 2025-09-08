@@ -3,6 +3,7 @@
 import { MessagesAnnotation, StateGraph } from "@langchain/langgraph";
 import { ChatOpenAI } from "@langchain/openai";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
+import { AIMessage } from "@langchain/core/messages";
 import { Blog } from "@/types/entries";
 import { tools } from "./tools";
 import { SYSTEM_PROMPT } from "./prompt";
@@ -38,7 +39,7 @@ function shouldContinue(state: typeof MessagesAnnotation.State) {
   const lastMessage = messages.at(-1);
 
   // If the LLM makes a tool call, then perform an action
-  if (lastMessage?.tool_calls?.length) {
+  if (lastMessage instanceof AIMessage && lastMessage.tool_calls?.length) {
     return "Action";
   }
   // Otherwise, we stop (reply to the user)

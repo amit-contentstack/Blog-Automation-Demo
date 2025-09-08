@@ -81,7 +81,7 @@ export interface BlogSection {
   };
 }
 
-export interface BlogContent extends Array<BlogSection> {}
+export type BlogContent = BlogSection[];
 
 export interface Blog extends BaseEntry {
   title: string;

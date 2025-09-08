@@ -6,7 +6,7 @@ function validateApiKey(request: NextRequest): boolean {
   const apiKey =
     request.headers.get("X-API-Key") ||
     request.headers.get("Authorization")?.replace("Bearer ", "");
-  const validApiKey = process.env.PUBLISH_API_KEY;
+  const validApiKey = process.env.API_KEY;
 
   if (!validApiKey) {
     console.error("PUBLISH_API_KEY environment variable is not set");
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: "Unauthorized - Invalid or missing API key",
+          error: "Unauthorized - Invalid API key",
         },
         { status: 401 }
       );

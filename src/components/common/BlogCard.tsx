@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Card from "../ui/Card";
 import Badge from "../ui/Badge";
 import { Blog } from "@/types/entries";
 
@@ -73,12 +72,7 @@ const BlogCard: React.FC<Blog> = ({
           <div className="flex items-center grow">
             <span className="text-ecoware-primary font-medium hover:text-ecoware-primary-hover transition-colors flex items-center gap-2 text-base border-b border-ecoware-primary pb-1">
               Read More
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

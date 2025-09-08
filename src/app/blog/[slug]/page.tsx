@@ -5,16 +5,11 @@ import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
 import Badge from "../../../components/ui/Badge";
 import Button from "../../../components/ui/Button";
-import { BlogCard } from "@/components";
 import stack from "@/utlis/contentstack-sdk";
 import { Blog, Blogs } from "@/types/entries";
 import { QueryOperation } from "@contentstack/delivery-sdk";
 
-const BlogDetailsPage = async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) => {
+const BlogDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
       day: "numeric",
@@ -25,10 +20,7 @@ const BlogDetailsPage = async ({
 
   const { slug } = await params;
 
-  const query = stack
-    .contentType("blog")
-    .entry()
-    .includeReference(["blog_author"]);
+  const query = stack.contentType("blog").entry().includeReference(["blog_author"]);
 
   const { entries = [] } = (await query
     .query()
@@ -46,12 +38,7 @@ const BlogDetailsPage = async ({
         <Container>
           {/* Featured Image */}
           <div className="relative aspect-[16/7] overflow-hidden bg-gradient-to-br from-gray-200 to-gray-400 rounded-2xl mb-8">
-            <Image
-              src={blog.feature_image.url}
-              alt={blog.title}
-              fill
-              className="object-cover"
-            />
+            <Image src={blog.feature_image.url} alt={blog.title} fill className="object-cover" />
           </div>
 
           {/* Article Header */}
@@ -123,24 +110,19 @@ const BlogDetailsPage = async ({
                       {/* Section Images */}
                       {contentSection.section.section_images.length > 0 && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                          {contentSection.section.section_images.map(
-                            (image, imgIndex) => (
-                              <div
-                                key={imgIndex}
-                                className="relative aspect-video overflow-hidden rounded-lg"
-                              >
-                                <Image
-                                  src={image.url}
-                                  alt={
-                                    image.title ||
-                                    `Section image ${imgIndex + 1}`
-                                  }
-                                  fill
-                                  className="object-cover"
-                                />
-                              </div>
-                            )
-                          )}
+                          {contentSection.section.section_images.map((image, imgIndex) => (
+                            <div
+                              key={imgIndex}
+                              className="relative aspect-video overflow-hidden rounded-lg"
+                            >
+                              <Image
+                                src={image.url}
+                                alt={image.title || `Section image ${imgIndex + 1}`}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                          ))}
                         </div>
                       )}
 
@@ -148,7 +130,7 @@ const BlogDetailsPage = async ({
                       {contentSection.section.quotes && (
                         <blockquote className="border-l-4 border-ecoware-primary-accent bg-gray-50 p-4 my-6">
                           <p className="text-ecoware-text-dark font-medium italic">
-                            "{contentSection.section.quotes}"
+                            &ldquo;{contentSection.section.quotes}&rdquo;
                           </p>
                         </blockquote>
                       )}
@@ -156,11 +138,9 @@ const BlogDetailsPage = async ({
                       {/* Bullet Points */}
                       {contentSection.section.bullet_points.length > 0 && (
                         <ul className="list-disc pl-6 space-y-2 text-ecoware-gray-dark">
-                          {contentSection.section.bullet_points.map(
-                            (point, pointIndex) => (
-                              <li key={pointIndex}>{point}</li>
-                            )
-                          )}
+                          {contentSection.section.bullet_points.map((point, pointIndex) => (
+                            <li key={pointIndex}>{point}</li>
+                          ))}
                         </ul>
                       )}
 
@@ -210,9 +190,7 @@ const BlogDetailsPage = async ({
                       />
                     ) : (
                       <div className="flex items-center justify-center w-full h-full text-ecoware-primary text-3xl font-bold">
-                        {blog.blog_author[0].title
-                          ? blog.blog_author[0].title.charAt(0)
-                          : "A"}
+                        {blog.blog_author[0].title ? blog.blog_author[0].title.charAt(0) : "A"}
                       </div>
                     )}
                   </div>
@@ -261,9 +239,7 @@ const BlogDetailsPage = async ({
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-1 h-6 bg-ecoware-primary-accent rounded-full"></div>
-                    <h3 className="text-lg font-medium text-ecoware-text-dark">
-                      Table of Content
-                    </h3>
+                    <h3 className="text-lg font-medium text-ecoware-text-dark">Table of Content</h3>
                   </div>
                   <div className="space-y-2">
                     {blog.table_of_content.map((item, index) => (

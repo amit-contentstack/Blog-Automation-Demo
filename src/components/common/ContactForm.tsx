@@ -1,9 +1,9 @@
-'use client';
-import React, { useState } from 'react';
-import Button from '../ui/Button';
-import Input from '../ui/Input';
-import Textarea from '../ui/Textarea';
-import Card from '../ui/Card';
+"use client";
+import React, { useState } from "react";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
+import Textarea from "../ui/Textarea";
+import Card from "../ui/Card";
 
 interface ContactFormData {
   firstName: string;
@@ -14,7 +14,7 @@ interface ContactFormData {
   subject: string;
   message: string;
   interestedProducts: string[];
-  preferredContact: 'email' | 'phone' | 'either';
+  preferredContact: "email" | "phone" | "either";
 }
 
 interface ContactFormProps {
@@ -30,72 +30,75 @@ const ContactForm: React.FC<ContactFormProps> = ({
   preselectedProduct,
   title = "Get in Touch",
   subtitle = "Ready to make your packaging more sustainable? Let's talk!",
-  className = ''
+  className = "",
 }) => {
   const [formData, setFormData] = useState<ContactFormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    company: '',
-    phone: '',
-    subject: preselectedProduct ? `Inquiry about ${preselectedProduct}` : '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    phone: "",
+    subject: preselectedProduct ? `Inquiry about ${preselectedProduct}` : "",
+    message: "",
     interestedProducts: preselectedProduct ? [preselectedProduct] : [],
-    preferredContact: 'email'
+    preferredContact: "email",
   });
 
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState<{type: 'success' | 'error', text: string} | null>(null);
+  const [submitMessage, setSubmitMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   const productOptions = [
-    'Biodegradable Packaging',
-    'Recycled Cardboard Boxes',
-    'Compostable Food Containers',
-    'Eco-Friendly Bags',
-    'Sustainable Labels',
-    'Custom Packaging Solutions',
-    'Bulk Orders',
-    'Other'
+    "Biodegradable Packaging",
+    "Recycled Cardboard Boxes",
+    "Compostable Food Containers",
+    "Eco-Friendly Bags",
+    "Sustainable Labels",
+    "Custom Packaging Solutions",
+    "Bulk Orders",
+    "Other",
   ];
 
   const validateForm = (): boolean => {
     const newErrors: Partial<ContactFormData> = {};
 
-    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = "Please enter a valid email address";
     }
-    if (!formData.company.trim()) newErrors.company = 'Company name is required';
-    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    if (!formData.company.trim()) newErrors.company = "Company name is required";
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
   };
 
   const handleProductsChange = (product: string, checked: boolean) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       interestedProducts: checked
         ? [...prev.interestedProducts, product]
-        : prev.interestedProducts.filter(p => p !== product)
+        : prev.interestedProducts.filter((p) => p !== product),
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -106,26 +109,32 @@ const ContactForm: React.FC<ContactFormProps> = ({
         await onSubmit(formData);
       } else {
         // Default submission logic (you'd implement API call here)
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-        console.log('Form submitted:', formData);
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+        console.log("Form submitted:", formData);
       }
-      
-      setSubmitMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.' });
-      
+
+      setSubmitMessage({
+        type: "success",
+        text: "Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.",
+      });
+
       // Reset form
       setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        company: '',
-        phone: '',
-        subject: '',
-        message: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
         interestedProducts: [],
-        preferredContact: 'email'
+        preferredContact: "email",
       });
-    } catch (error) {
-      setSubmitMessage({ type: 'error', text: 'Sorry, there was an error sending your message. Please try again or contact us directly.' });
+    } catch (_error) {
+      setSubmitMessage({
+        type: "error",
+        text: "Sorry, there was an error sending your message. Please try again or contact us directly.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -139,7 +148,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
       </div>
 
       {submitMessage && (
-        <div className={`p-4 rounded-lg mb-6 ${submitMessage.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+        <div
+          className={`p-4 rounded-lg mb-6 ${
+            submitMessage.type === "success"
+              ? "bg-green-50 text-green-800 border border-green-200"
+              : "bg-red-50 text-red-800 border border-red-200"
+          }`}
+        >
           {submitMessage.text}
         </div>
       )}
@@ -151,7 +166,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             label="First Name *"
             type="text"
             value={formData.firstName}
-            onChange={(e) => handleInputChange('firstName', e.target.value)}
+            onChange={(e) => handleInputChange("firstName", e.target.value)}
             error={errors.firstName}
             placeholder="John"
           />
@@ -159,7 +174,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             label="Last Name *"
             type="text"
             value={formData.lastName}
-            onChange={(e) => handleInputChange('lastName', e.target.value)}
+            onChange={(e) => handleInputChange("lastName", e.target.value)}
             error={errors.lastName}
             placeholder="Doe"
           />
@@ -171,7 +186,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             label="Email Address *"
             type="email"
             value={formData.email}
-            onChange={(e) => handleInputChange('email', e.target.value)}
+            onChange={(e) => handleInputChange("email", e.target.value)}
             error={errors.email}
             placeholder="john@company.com"
           />
@@ -179,7 +194,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             label="Phone Number"
             type="tel"
             value={formData.phone}
-            onChange={(e) => handleInputChange('phone', e.target.value)}
+            onChange={(e) => handleInputChange("phone", e.target.value)}
             error={errors.phone}
             placeholder="+1 (555) 123-4567"
           />
@@ -190,7 +205,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           label="Company Name *"
           type="text"
           value={formData.company}
-          onChange={(e) => handleInputChange('company', e.target.value)}
+          onChange={(e) => handleInputChange("company", e.target.value)}
           error={errors.company}
           placeholder="Your Company Inc."
         />
@@ -200,7 +215,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           label="Subject *"
           type="text"
           value={formData.subject}
-          onChange={(e) => handleInputChange('subject', e.target.value)}
+          onChange={(e) => handleInputChange("subject", e.target.value)}
           error={errors.subject}
           placeholder="How can we help you?"
         />
@@ -231,14 +246,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
             Preferred Contact Method
           </label>
           <div className="flex space-x-6">
-            {(['email', 'phone', 'either'] as const).map((method) => (
+            {(["email", "phone", "either"] as const).map((method) => (
               <label key={method} className="flex items-center space-x-2 text-sm">
                 <input
                   type="radio"
                   name="preferredContact"
                   value={method}
                   checked={formData.preferredContact === method}
-                  onChange={(e) => handleInputChange('preferredContact', e.target.value)}
+                  onChange={(e) => handleInputChange("preferredContact", e.target.value)}
                   className="w-4 h-4 text-ecoware-primary border-ecoware-gray-medium focus:ring-ecoware-primary focus:ring-2"
                 />
                 <span className="capitalize">{method}</span>
@@ -251,7 +266,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <Textarea
           label="Message *"
           value={formData.message}
-          onChange={(e) => handleInputChange('message', e.target.value)}
+          onChange={(e) => handleInputChange("message", e.target.value)}
           error={errors.message}
           placeholder="Tell us about your packaging needs, sustainability goals, or any specific requirements..."
           rows={5}
@@ -266,7 +281,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             disabled={isSubmitting}
             className="min-w-[150px]"
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
         </div>
       </form>
@@ -278,7 +293,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
             <strong>Direct Contact:</strong> hello@ecowaresolutions.com | +1 (555) 123-4567
           </p>
           <p>
-            <strong>Response Time:</strong> We typically respond within 24 hours during business days.
+            <strong>Response Time:</strong> We typically respond within 24 hours during business
+            days.
           </p>
         </div>
       </div>

@@ -8,88 +8,6 @@ import Input from "../../components/ui/Input";
 import stack from "@/utlis/contentstack-sdk";
 import { Blog, Blogs } from "@/types/entries";
 
-// Mock blog data - in a real app this would come from a CMS or API
-const mockBlogs = [
-  {
-    slug: "profitable-ad-campaigns",
-    title:
-      "A Beginner's Guide to Running Profitable Ad Campaigns: Strategies That Actually Work",
-    excerpt:
-      "Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia...",
-    image: "/logo.png", // Using placeholder for now
-    category: "Paid Advertising",
-    tags: [
-      "SEO",
-      "Social Media Marketing",
-      "PPC",
-      "Affiliate Marketing",
-      "Influencer Marketing",
-      "Local SEO",
-    ],
-    publishedAt: "2025-05-15",
-    author: {
-      name: "John Doe",
-    },
-    readTime: 5,
-  },
-  {
-    slug: "seo-strategies-2025",
-    title: "Top 10 SEO Strategies That Still Work in 2025",
-    excerpt:
-      "Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia...",
-    image: "/logo.png",
-    category: "SEO",
-    tags: ["SEO", "Content Marketing", "Local SEO"],
-    publishedAt: "2025-05-14",
-    author: {
-      name: "Jane Smith",
-    },
-    readTime: 8,
-  },
-  {
-    slug: "long-form-content-2025",
-    title: "Why Long-Form Content Still Dominates in 2025",
-    excerpt:
-      "Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia...",
-    image: "/logo.png",
-    category: "Content Marketing",
-    tags: ["Content Marketing", "SEO", "Social Media Marketing"],
-    publishedAt: "2025-05-13",
-    author: {
-      name: "Mike Johnson",
-    },
-    readTime: 6,
-  },
-  {
-    slug: "instagram-marketing-small-business",
-    title: "Mastering Instagram Marketing for Small Businesses",
-    excerpt:
-      "Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia...",
-    image: "/logo.png",
-    category: "Social Media Marketing",
-    tags: ["Social Media Marketing", "Instagram", "Small Business"],
-    publishedAt: "2025-05-12",
-    author: {
-      name: "Sarah Wilson",
-    },
-    readTime: 7,
-  },
-  {
-    slug: "consistency-digital-branding",
-    title: "The Role of Consistency in Digital Branding",
-    excerpt:
-      "Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia...",
-    image: "/logo.png",
-    category: "Branding",
-    tags: ["Branding", "Digital Marketing", "Brand Strategy"],
-    publishedAt: "2025-05-11",
-    author: {
-      name: "David Brown",
-    },
-    readTime: 4,
-  },
-];
-
 const popularTags = [
   "SEO",
   "Email Marketing",
@@ -122,14 +40,7 @@ const BlogPage: React.FC = async () => {
   const query = stack
     .contentType("blog")
     .entry()
-    .only([
-      "title",
-      "url",
-      "feature_image",
-      "blog_category",
-      "description",
-      "published_date",
-    ])
+    .only(["title", "url", "feature_image", "blog_category", "description", "published_date"])
     .query();
 
   const result = await query.includeCount().paginate().find<Blogs>();
@@ -158,9 +69,7 @@ const BlogPage: React.FC = async () => {
                   />
                 </svg>
               </div>
-              <span className="text-ecoware-primary text-sm font-medium">
-                News & Blogs
-              </span>
+              <span className="text-ecoware-primary text-sm font-medium">News & Blogs</span>
             </div>
             <h1 className="text-3xl font-bold text-ecoware-text-dark mb-2">
               Our Latest News & Blogs
@@ -189,12 +98,7 @@ const BlogPage: React.FC = async () => {
                     size="sm"
                     className="px-3 py-1 text-ecoware-gray-dark border-ecoware-gray-medium hover:bg-ecoware-gray-light"
                   >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -225,9 +129,7 @@ const BlogPage: React.FC = async () => {
                   >
                     3
                   </Button>
-                  <span className="px-2 text-ecoware-gray-dark text-sm">
-                    ...
-                  </span>
+                  <span className="px-2 text-ecoware-gray-dark text-sm">...</span>
                   <Button
                     variant="outline"
                     size="sm"
@@ -241,12 +143,7 @@ const BlogPage: React.FC = async () => {
                     size="sm"
                     className="px-3 py-1 text-ecoware-gray-dark border-ecoware-gray-medium hover:bg-ecoware-gray-light"
                   >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -266,16 +163,10 @@ const BlogPage: React.FC = async () => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-1 h-6 bg-ecoware-primary-accent rounded-full"></div>
-                    <h3 className="text-lg font-medium text-ecoware-text-dark">
-                      Search
-                    </h3>
+                    <h3 className="text-lg font-medium text-ecoware-text-dark">Search</h3>
                   </div>
                   <div className="relative">
-                    <Input
-                      type="text"
-                      placeholder="Search"
-                      className="pr-10 text-sm"
-                    />
+                    <Input type="text" placeholder="Search" className="pr-10 text-sm" />
                     <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-ecoware-gray-dark hover:text-ecoware-primary">
                       <svg
                         className="w-4 h-4"
@@ -298,18 +189,11 @@ const BlogPage: React.FC = async () => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-1 h-6 bg-ecoware-primary-accent rounded-full"></div>
-                    <h3 className="text-lg font-medium text-ecoware-text-dark">
-                      Popular Tags
-                    </h3>
+                    <h3 className="text-lg font-medium text-ecoware-text-dark">Popular Tags</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {popularTags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="outline"
-                        size="sm"
-                        className="text-xs"
-                      >
+                      <Badge key={tag} variant="outline" size="sm" className="text-xs">
                         {tag}
                       </Badge>
                     ))}
@@ -320,9 +204,7 @@ const BlogPage: React.FC = async () => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-1 h-6 bg-ecoware-primary-accent rounded-full"></div>
-                    <h3 className="text-lg font-medium text-ecoware-text-dark">
-                      Recent Post
-                    </h3>
+                    <h3 className="text-lg font-medium text-ecoware-text-dark">Recent Post</h3>
                   </div>
                   <div className="space-y-2">
                     {recentPosts.map((post, index) => (
