@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* EcoWare Brand Colors */
+  --color-ecoware-primary: #2e4f3f;
+  --color-ecoware-primary-accent: #baf813;
+  --color-ecoware-primary-hover: #183023;
+
+  /* Gray Scale */
+  --color-ecoware-gray-light: #f6f6f6;
+  --color-ecoware-gray-medium: #e0e0e0;
+  --color-ecoware-gray-dark: #555555;
+
+  /* Text Colors */
+  --color-ecoware-text-dark: #111111;
+  --color-ecoware-text-light: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+/* EcoWare Custom Animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}

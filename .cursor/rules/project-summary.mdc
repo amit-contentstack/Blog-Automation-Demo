@@ -1,0 +1,166 @@
+---
+description: Complete project overview, requirements, and context for EcoWare Solutions website
+globs: "**/*"
+alwaysApply: true
+---
+
+# EcoWare Solutions - Project Summary
+
+## Project Overview
+
+**Company**: EcoWare Solutions  
+**Industry**: Sustainable Packaging Solutions  
+**Tagline**: "Write Once. Share Everywhere."
+
+EcoWare Solutions is a sustainable packaging company focused on eco-friendly solutions and waste reduction. The website serves as both a business showcase and a marketing automation platform.
+
+## Core Mission & Values
+
+### Mission
+To provide innovative, sustainable packaging solutions that reduce environmental impact while meeting business needs.
+
+### Values
+- **Sustainability**: Environmental responsibility in every solution
+- **Innovation**: Cutting-edge eco-friendly packaging technology  
+- **Transparency**: Honest communication about environmental impact
+- **Quality**: Durable, reliable packaging solutions
+- **Partnership**: Collaborative approach with clients
+
+### Brand Tone & Theme
+- **Eco-friendly**: Environmentally conscious messaging
+- **Sustainable**: Long-term thinking and solutions
+- **Modern**: Contemporary design and technology
+- **Trustworthy**: Reliable, credible, and authentic
+- **Professional**: Business-focused with approachable tone
+
+## Key Feature: Blog-to-Social Automation System
+
+### Primary Functionality
+Automated content repurposing system that transforms blog posts into platform-specific social media content.
+
+### Workflow
+1. **Blog Published** → Content enters automation pipeline
+2. **AI Processing** → Content analyzed and adapted
+3. **Platform Optimization** → Customized for each social platform
+4. **Auto-Publishing** → Content distributed automatically
+
+## Website Architecture
+
+### Core Pages
+
+#### 1. Home Page
+- **Hero Section**: Mission statement and value proposition
+- **Key Values**: Sustainability pillars with visual elements
+- **Call-to-Action**: Primary conversion points
+- **Social Proof**: Customer testimonials or certifications
+
+#### 2. About Us
+- **Company Story**: Founding mission and journey
+- **Mission Statement**: Clear environmental commitment  
+- **Vision**: Future goals and impact objectives
+- **Team**: Leadership and key personnel (optional)
+
+#### 3. Products
+- **Product Catalog**: Eco-friendly packaging solutions
+- **Categories**: Organized by material, use case, or industry
+- **Specifications**: Technical details and sustainability metrics
+- **Case Studies**: Real-world applications and results
+
+#### 4. Blog
+- **Content Focus**: Sustainability, packaging innovation, waste reduction
+- **Categories**: 
+  - Sustainable Practices
+  - Industry Insights
+  - Product Updates
+  - Environmental Impact
+- **Automation Integration**: Blog-to-social pipeline trigger point
+
+#### 5. Contact
+- **Contact Form**: Lead generation and inquiries
+- **Company Information**: Address, phone, email
+- **Business Hours**: Availability and response times
+- **Location**: Office or facility information
+
+#### 6. Social Media Integration
+- **Platform Links**: Instagram, Facebook, LinkedIn
+- **Social Feeds**: Embedded or linked content
+- **Share Buttons**: Easy content sharing functionality
+
+## Content Guidelines
+
+### Blog Content Strategy
+- **Educational**: Teaching sustainable practices
+- **Industry-Focused**: Packaging trends and innovations  
+- **Solution-Oriented**: Problem-solving approach
+- **Data-Driven**: Environmental impact statistics
+- **Actionable**: Practical steps and recommendations
+
+### Tone of Voice
+- **Authoritative**: Expert knowledge and credibility
+- **Accessible**: Clear, jargon-free communication
+- **Optimistic**: Positive environmental future focus
+- **Action-Oriented**: Encouraging sustainable choices
+- **Professional**: Business-appropriate language
+
+### Visual Guidelines
+- **Color Palette**: Earth tones, greens, natural colors
+- **Imagery**: Natural materials, clean packaging, eco-scenes
+- **Typography**: Clean, modern, readable fonts
+- **Icons**: Sustainability-themed, minimal design
+- **Photography**: High-quality, professional, authentic
+
+## Technical Requirements
+
+### Performance Standards
+- **Loading Speed**: < 3 seconds first contentful paint
+- **Mobile Optimization**: Responsive design across all devices
+- **SEO Optimization**: Search engine friendly structure
+- **Accessibility**: WCAG 2.1 AA compliance
+
+### Integration Requirements
+- **Social Media APIs**: Instagram, Facebook automation
+- **Content Management**: Easy blog publishing workflow
+- **Analytics**: Traffic, engagement, and conversion tracking
+- **Email Marketing**: Newsletter and lead nurturing integration
+
+## Success Metrics
+
+### Website Performance
+- **Traffic Growth**: Monthly unique visitors
+- **Engagement**: Time on site, pages per session
+- **Lead Generation**: Contact form submissions
+- **SEO Rankings**: Keyword positioning improvement
+
+### Social Media Automation
+- **Content Distribution**: Posts per week across platforms
+- **Engagement Rates**: Likes, shares, comments per post
+- **Reach Expansion**: Follower growth and impression increase
+- **Time Savings**: Hours saved on manual posting
+
+## Target Audience
+
+### Primary Users
+- **Businesses**: Companies seeking sustainable packaging
+- **Procurement Managers**: Decision-makers for packaging solutions
+- **Sustainability Officers**: Environmental impact focused roles
+- **Marketing Teams**: Content and social media managers
+
+### Secondary Users
+- **Industry Professionals**: Packaging and sustainability experts
+- **Consumers**: Environmentally conscious individuals
+- **Partners**: Suppliers and distribution partners
+- **Media**: Industry journalists and influencers
+
+## Competitive Advantages
+- **Automation Innovation**: First-to-market blog-to-social system
+- **Sustainability Focus**: Deep environmental expertise
+- **Content Efficiency**: Streamlined marketing operations
+- **Brand Consistency**: Unified messaging across platforms
+- **Scalable Solution**: Growth-ready architecture
+
+## Future Roadmap
+- **AI Enhancement**: Improved content personalization
+- **Platform Expansion**: Additional social media channels
+- **Analytics Dashboard**: Real-time performance insights
+- **API Development**: Third-party integration capabilities
+- **Mobile App**: Customer portal and ordering system

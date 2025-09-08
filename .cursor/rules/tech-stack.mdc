@@ -1,0 +1,125 @@
+---
+description: Documentation of the application's tech stack, dependencies, and their versions
+globs: "**/*"
+alwaysApply: true
+---
+
+# EcoWare Tech Stack & Dependencies
+
+This document outlines the complete technology stack used in the EcoWare application, including versions and purposes.
+
+## Core Framework & Runtime
+
+### Next.js 15.5.0
+- **Purpose**: React framework for full-stack web applications
+- **Features**: App Router, Server Components, API routes, built-in optimizations
+- **Scripts**: 
+  - `dev`: Development server with Turbopack
+  - `build`: Production build with Turbopack
+  - `start`: Production server
+
+### React 19.1.0 & React DOM 19.1.0
+- **Purpose**: UI library and DOM renderer
+- **Features**: Latest React features including Concurrent Features, Server Components compatibility
+- **Note**: Using the latest stable React 19 release
+
+## Development Environment
+
+### TypeScript ^5
+- **Purpose**: Static type checking and enhanced developer experience
+- **Version**: Latest TypeScript 5.x series
+- **Benefits**: Type safety, better IDE support, improved code quality
+
+### Node.js Types (@types/node ^20)
+- **Purpose**: TypeScript definitions for Node.js APIs
+- **Version**: Node.js 20 LTS compatible types
+
+### React Types (@types/react ^19, @types/react-dom ^19)
+- **Purpose**: TypeScript definitions for React and React DOM
+- **Version**: Matching React 19 types
+
+## Styling & UI
+
+### Tailwind CSS ^4
+- **Purpose**: Utility-first CSS framework
+- **Version**: Latest Tailwind CSS 4.x (next-generation architecture)
+- **PostCSS**: Uses @tailwindcss/postcss ^4 for processing
+
+## Code Quality & Linting
+
+### ESLint ^9
+- **Purpose**: JavaScript/TypeScript linting and code quality
+- **Config**: Uses eslint-config-next 15.5.0 for Next.js specific rules
+- **Additional**: @eslint/eslintrc ^3 for configuration compatibility
+
+## Development Workflow
+
+### Package Management
+- **Tool**: npm (with package-lock.json for consistent installs)
+- **Node Version**: Compatible with Node.js 20 LTS
+
+### Build System
+- **Bundler**: Turbopack (Next.js native, faster than Webpack)
+- **Enabled**: Both dev and build commands use --turbopack flag
+
+## Version Strategy
+
+### Exact Versions (Pinned)
+```json
+{
+  "react": "19.1.0",
+  "react-dom": "19.1.0", 
+  "next": "15.5.0",
+  "eslint-config-next": "15.5.0"
+}
+```
+
+### Caret Versions (Minor Updates Allowed)
+```json
+{
+  "typescript": "^5",
+  "@types/node": "^20", 
+  "@types/react": "^19",
+  "@types/react-dom": "^19",
+  "@tailwindcss/postcss": "^4",
+  "tailwindcss": "^4",
+  "eslint": "^9",
+  "@eslint/eslintrc": "^3"
+}
+```
+
+## Guidelines for Dependency Management
+
+### Adding New Dependencies
+1. **Major Dependencies**: Pin exact versions for stability
+2. **Type Definitions**: Use caret versioning to get compatible updates
+3. **Dev Tools**: Use caret versioning for latest improvements
+4. **Always** update package-lock.json when adding dependencies
+
+### Version Update Strategy
+1. **React/Next.js**: Test thoroughly before updating major versions
+2. **TypeScript**: Keep updated within major version for latest features
+3. **Tailwind CSS**: Monitor breaking changes in v4+ updates
+4. **ESLint**: Update regularly for latest rules and security fixes
+
+### Compatibility Notes
+- React 19 + Next.js 15.5.0 are fully compatible
+- TypeScript ^5 provides excellent React 19 support
+- Tailwind CSS ^4 uses new architecture (different from v3)
+- ESLint ^9 has configuration changes from previous versions
+
+## Architecture Benefits
+
+This stack provides:
+- **Performance**: Turbopack bundling, React 19 optimizations, Next.js App Router
+- **Developer Experience**: TypeScript, ESLint, Hot Reload, Modern tooling
+- **Scalability**: Next.js full-stack capabilities, React Server Components
+- **Styling**: Utility-first CSS with Tailwind CSS 4's improved performance
+- **Modern Features**: Latest React patterns, Next.js 15 improvements
+
+## Maintenance Schedule
+
+- **Weekly**: Patch updates for security fixes
+- **Monthly**: Minor version updates for non-breaking improvements  
+- **Quarterly**: Review major version updates and plan migrations
+- **As Needed**: Critical security updates immediately
