@@ -12,7 +12,7 @@ const createMediaContainer = async (imageUrl: string, caption: string) => {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error(error);
+    console.error("Error creating media container", error);
     throw error;
   }
 };
@@ -32,7 +32,7 @@ const publishMediaContainer = async (mediaContainerId: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error(error);
+    console.error("Error publishing media container", error);
     throw error;
   }
 };
@@ -41,11 +41,12 @@ const publishPostOnInstagram = async (imageUrl: string, caption: string) => {
   console.log("Publishing post on Instagram", imageUrl, caption);
   try {
     const mediaContainerId = await createMediaContainer(imageUrl, caption);
+    console.log("Media container created", mediaContainerId);
     const response = await publishMediaContainer(mediaContainerId?.id);
     console.log(response.data);
     return { message: "Post published on Instagram" };
   } catch (error) {
-    console.error(error);
+    console.error("Error creating post on Facebook", error);
     throw error;
   }
 };
@@ -61,7 +62,7 @@ const createPostOnFacebook = async (imageUrl: string, caption: string) => {
     console.log(response.data);
     return { message: "Post published on Facebook" };
   } catch (error) {
-    console.error(error);
+    console.error("Error creating post on Facebook", error);
     throw error;
   }
 };
