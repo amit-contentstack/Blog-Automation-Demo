@@ -4,6 +4,7 @@ import axios from "axios";
 
 const createMediaContainer = async (imageUrl: string, caption: string) => {
   try {
+    console.log("URL: ", `${process.env.META_URL}/${process.env.IG_APP_ID}/media`);
     const response = await axios.post(`${process.env.META_URL}/${process.env.IG_APP_ID}/media`, {
       image_url: imageUrl,
       caption: caption,
