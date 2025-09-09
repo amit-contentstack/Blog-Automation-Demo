@@ -10,11 +10,18 @@ const createMediaContainer = async (imageUrl: string, caption: string) => {
       caption: caption,
       access_token: process.env.IG_TOKEN,
     });
-    const response = await axios.post(`${process.env.META_URL}/${process.env.IG_APP_ID}/media`, {
-      image_url: imageUrl,
-      caption: caption,
-      access_token: process.env.IG_TOKEN,
-    });
+    const response = await axios.post(
+      `${process.env.META_URL}/${process.env.IG_APP_ID}/media`,
+      {
+        image_url: imageUrl,
+        caption: caption,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.IG_TOKEN}`,
+        },
+      }
+    );
     console.log(response.data);
     return response.data;
   } catch (error) {
