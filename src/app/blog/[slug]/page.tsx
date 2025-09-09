@@ -71,8 +71,8 @@ const BlogDetailsPage = async ({ params }: { params: Promise<{ slug: string }> }
               </h1>
 
               <p className="text-lg text-ecoware-gray-dark leading-relaxed mb-8 max-w-lg mx-auto">
-                Sorry, we couldn't find the blog post you're looking for. It might have been moved,
-                deleted, or the URL might be incorrect.
+                Sorry, we couldn&apos;t find the blog post you&apos;re looking for. It might have
+                been moved, deleted, or the URL might be incorrect.
               </p>
 
               {/* Action Buttons */}

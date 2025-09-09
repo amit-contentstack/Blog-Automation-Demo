@@ -8,7 +8,9 @@ import Input from "../../components/ui/Input";
 import stack from "@/utlis/contentstack-sdk";
 import { Blog, Blogs } from "@/types/entries";
 
-export const revalidate = 0;
+// Next.js 15 App Router - Route Segment Config
+export const dynamic = "force-dynamic"; // Prevent static generation at build time
+export const revalidate = 60; // Revalidate every 1 minutes in production
 
 const BlogPage: React.FC = async () => {
   // make dummy loading fetch call

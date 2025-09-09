@@ -23,11 +23,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   autoplay = true,
   interval = 3000,
 }) => {
-  // Ensure we have a valid array of images
-  if (!Array.isArray(images) || images.length === 0) {
-    return <div>No images to display.</div>;
-  }
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState("right");
 
