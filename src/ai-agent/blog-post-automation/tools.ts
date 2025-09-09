@@ -4,12 +4,6 @@ import axios from "axios";
 
 const createMediaContainer = async (imageUrl: string, caption: string) => {
   try {
-    console.log("URL: ", `${process.env.META_URL}/${process.env.IG_APP_ID}/media`);
-    console.log("PAYLOAD: ", {
-      image_url: imageUrl,
-      caption: caption,
-      access_token: process.env.IG_TOKEN,
-    });
     const response = await axios.post(
       `${process.env.META_URL}/${process.env.IG_APP_ID}/media`,
       {
@@ -22,7 +16,7 @@ const createMediaContainer = async (imageUrl: string, caption: string) => {
         },
       }
     );
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error creating media container", error);
@@ -56,7 +50,7 @@ const publishPostOnInstagram = async (imageUrl: string, caption: string) => {
     const mediaContainerId = await createMediaContainer(imageUrl, caption);
     console.log("Media container created", mediaContainerId);
     const response = await publishMediaContainer(mediaContainerId?.id);
-    console.log(response.data);
+    // console.log(response.data);
     return { message: "Post published on Instagram" };
   } catch (error) {
     console.error("Error creating post on Facebook", error);
@@ -72,7 +66,7 @@ const createPostOnFacebook = async (imageUrl: string, caption: string) => {
       message: caption,
       access_token: process.env.FB_TOKEN,
     });
-    console.log(response.data);
+    // console.log(response.data);
     return { message: "Post published on Facebook" };
   } catch (error) {
     console.error("Error creating post on Facebook", error);

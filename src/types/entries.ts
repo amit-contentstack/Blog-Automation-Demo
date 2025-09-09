@@ -1,4 +1,4 @@
-import { BaseEntry, BaseAsset } from "@contentstack/delivery-sdk";
+import { BaseEntry, BaseAsset, GlobalField } from "@contentstack/delivery-sdk";
 
 export interface LandingPage extends BaseEntry {
   title: string;
@@ -96,8 +96,21 @@ export interface Blog extends BaseEntry {
   };
   published_date: string;
   platforms_to_post: string[];
+  related_blogs: { uid: string }[];
 }
 
 export interface Blogs {
   entries: Blog[];
+}
+
+export interface TagsField extends GlobalField {
+  schema: [
+    {
+      enum: {
+        choices: {
+          value: string;
+        }[];
+      };
+    }
+  ];
 }

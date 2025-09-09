@@ -97,9 +97,9 @@ export async function generateInstagramCaption(blogData: Blog) {
         },
       ],
     });
-    console.log("--------------------------------");
-    console.log("Result from LLM: ", result);
-    console.log("--------------------------------");
+    // console.log("--------------------------------");
+    // console.log("Result from LLM: ", result);
+    // console.log("--------------------------------");
 
     return {
       success: true,

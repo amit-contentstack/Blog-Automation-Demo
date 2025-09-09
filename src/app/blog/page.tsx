@@ -2,41 +2,18 @@ import React from "react";
 import Container from "../../components/layout/Container";
 import Section from "../../components/layout/Section";
 import BlogCard from "../../components/common/BlogCard";
-import Badge from "../../components/ui/Badge";
+import PopularTags from "../../components/common/PopularTags";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import stack from "@/utlis/contentstack-sdk";
 import { Blog, Blogs } from "@/types/entries";
 
-const popularTags = [
-  "SEO",
-  "Email Marketing",
-  "Social Media Marketing",
-  "PPC",
-  "Affiliate Marketing",
-  "Influencer Marketing",
-  "Local SEO",
-];
-
-const recentPosts = [
-  {
-    title: "5 Reasons Why You Need a Full SEO Audit in 2025",
-    date: "7 Nov 2025",
-    slug: "seo-audit-2025",
-  },
-  {
-    title: "5 Common PPC Mistakes That Drain Your Budget",
-    date: "6 Nov 2025",
-    slug: "ppc-mistakes-2025",
-  },
-  {
-    title: "How to Write SEO-Friendly Blog Posts That Convert",
-    date: "5 Nov 2025",
-    slug: "seo-friendly-blog-posts",
-  },
-];
+export const revalidate = 0;
 
 const BlogPage: React.FC = async () => {
+  // make dummy loading fetch call
+  // await new Promise((resolve) => setTimeout(resolve, 4000));
+
   const query = stack
     .contentType("blog")
     .entry()
@@ -47,7 +24,7 @@ const BlogPage: React.FC = async () => {
 
   const { entries: blogs = [] as Blog[], count = 0 as number } = result;
 
-  console.log(result);
+  // console.log(result);
 
   return (
     <main>
@@ -186,22 +163,10 @@ const BlogPage: React.FC = async () => {
                 </div>
 
                 {/* Popular Tags */}
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-1 h-6 bg-ecoware-primary-accent rounded-full"></div>
-                    <h3 className="text-lg font-medium text-ecoware-text-dark">Popular Tags</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {popularTags.map((tag) => (
-                      <Badge key={tag} variant="outline" size="sm" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
+                <PopularTags />
 
                 {/* Recent Posts */}
-                <div>
+                {/* <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-1 h-6 bg-ecoware-primary-accent rounded-full"></div>
                     <h3 className="text-lg font-medium text-ecoware-text-dark">Recent Post</h3>
@@ -226,9 +191,9 @@ const BlogPage: React.FC = async () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
 
-                {/* CTA Banner */}
+                {/* Newsletter Subscription CTA */}
                 <div className="bg-gradient-to-br from-ecoware-primary to-ecoware-primary/90 rounded-lg p-6 text-center text-white">
                   <div className="mb-4">
                     <div className="w-12 h-12 bg-ecoware-primary-accent rounded-lg flex items-center justify-center mx-auto mb-3">
@@ -242,20 +207,22 @@ const BlogPage: React.FC = async () => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                         />
                       </svg>
                     </div>
-                    <h4 className="text-sm font-semibold mb-2">
-                      Looking to Elevate Your Digital Presence?
-                    </h4>
+                    <h4 className="text-sm font-semibold mb-2">Stay Updated</h4>
+                    <p className="text-xs text-white/90 mb-3">
+                      Get weekly insights, industry trends, and eco-friendly solutions delivered to
+                      your inbox.
+                    </p>
                   </div>
                   <Button
                     variant="primary"
                     size="sm"
                     className="bg-ecoware-primary-accent text-ecoware-primary hover:bg-ecoware-primary-accent/90 text-xs font-medium"
                   >
-                    Start Now
+                    Subscribe Now
                   </Button>
                 </div>
               </div>

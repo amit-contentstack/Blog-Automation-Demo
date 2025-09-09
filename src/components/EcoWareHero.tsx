@@ -77,7 +77,7 @@ const EcoWareHero: React.FC = async () => {
 
           {/* Right Column - Hero Image */}
           <div className="relative">
-            <HeroImageCarousel images={hero_image} />
+            <HeroImageCarousel images={hero_image.map((image) => image.url)} />
           </div>
         </div>
       </Container>

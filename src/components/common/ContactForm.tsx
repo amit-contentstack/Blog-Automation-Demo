@@ -110,7 +110,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       } else {
         // Default submission logic (you'd implement API call here)
         await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
-        console.log("Form submitted:", formData);
+        // console.log("Form submitted:", formData);
       }
 
       setSubmitMessage({

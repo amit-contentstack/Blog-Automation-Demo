@@ -2,151 +2,108 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BaseAsset } from "@contentstack/delivery-sdk";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface HeroImageCarouselProps {
-  images: BaseAsset[];
-  autoSlideInterval?: number;
+interface ImageCarouselProps {
+  images: string[];
+  autoplay?: boolean;
+  interval?: number;
 }
 
-const HeroImageCarousel: React.FC<HeroImageCarouselProps> = ({
+/**
+ * A reusable image carousel component with infinite looping and autoplay.
+ * @param {object} props - The component props.
+ * @param {string[]} props.images - An array of image URLs to display.
+ * @param {boolean} [props.autoplay=true] - Whether the carousel should automatically play.
+ * @param {number} [props.interval=3000] - The interval for autoplay in milliseconds.
+ * @returns {JSX.Element} The image carousel component.
+ */
+const ImageCarousel: React.FC<ImageCarouselProps> = ({
   images,
-  autoSlideInterval = 4000,
+  autoplay = true,
+  interval = 3000,
 }) => {
+  // Ensure we have a valid array of images
+  if (!Array.isArray(images) || images.length === 0) {
+    return <div>No images to display.</div>;
+  }
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("right");
 
-  // Auto-slide functionality
+  // Define animation variants for entering, centered, and exiting images
+  const slideVariants = {
+    enter: (direction: string) => ({
+      x: direction === "right" ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: string) => ({
+      zIndex: 0,
+      x: direction === "left" ? "100%" : "-100%",
+      opacity: 0,
+    }),
+  };
+
+  const handleNext = () => {
+    setDirection("right");
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setDirection("left");
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  // Autoplay functionality
   useEffect(() => {
-    if (images.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, autoSlideInterval);
-
-    return () => clearInterval(interval);
-  }, [images.length, autoSlideInterval]);
-
-  // Get the images for current view (left, center, right)
-  const getVisibleImages = () => {
-    if (images.length === 0) return { left: null, center: null, right: null };
-    if (images.length === 1)
-      return { left: null, center: images[0], right: null };
-    if (images.length === 2) {
-      return {
-        left: images[(currentIndex - 1 + images.length) % images.length],
-        center: images[currentIndex],
-        right: null,
-      };
+    if (autoplay) {
+      const autoPlayInterval = setInterval(handleNext, interval);
+      return () => clearInterval(autoPlayInterval);
     }
-
-    return {
-      left: images[(currentIndex - 1 + images.length) % images.length],
-      center: images[currentIndex],
-      right: images[(currentIndex + 1) % images.length],
-    };
-  };
-
-  const { left, center, right } = getVisibleImages();
-
-  // Animation variants for different positions - only width changes
-  const centerVariants = {
-    initial: { width: 80, opacity: 0.7 },
-    animate: { width: 400, opacity: 1 },
-    exit: { width: 80, opacity: 0.7 },
-  };
-
-  const leftVariants = {
-    initial: { width: 80, opacity: 0.7 },
-    animate: { width: 80, opacity: 0.8 },
-    exit: { width: 80, opacity: 0.7 },
-  };
-
-  const rightVariants = {
-    initial: { width: 80, opacity: 0.7 },
-    animate: { width: 80, opacity: 0.8 },
-    exit: { width: 80, opacity: 0.7 },
-  };
-
-  const transition = {
-    type: "spring" as const,
-    stiffness: 300,
-    damping: 30,
-    duration: 0.8,
-  };
+  }, [autoplay, interval, currentIndex]);
 
   return (
-    <div className="relative">
-      {/* Main carousel container - Hero size */}
-      <div className="relative w-full max-w-2xl ml-auto overflow-hidden">
-        <div className="relative h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-ecoware-primary/10 to-ecoware-primary/5">
-          {/* Strip-like carousel layout */}
-          <div className="flex items-center justify-center w-full h-full gap-2 px-4">
-            {/* Left Image */}
-            {left && (
-              <motion.div
-                key={`left-${currentIndex}`}
-                className="overflow-hidden rounded-2xl shadow-lg"
-                variants={leftVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                transition={transition}
-                style={{ height: "320px" }}
-              >
-                <img
-                  src={left.url}
-                  alt="Hero image left"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            )}
+    <div className="relative w-full max-w-2xl h-96 mx-auto overflow-hidden rounded-lg shadow-lg">
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.img
+          key={currentIndex}
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex + 1}`}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.2 },
+          }}
+          className="absolute w-full h-full object-cover"
+        />
+      </AnimatePresence>
 
-            {/* Center Image (Main) */}
-            {center && (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`center-${currentIndex}`}
-                  className="overflow-hidden rounded-3xl shadow-2xl"
-                  variants={centerVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  transition={transition}
-                  style={{ height: "320px" }}
-                >
-                  <img
-                    src={center.url}
-                    alt="Hero image center"
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              </AnimatePresence>
-            )}
-
-            {/* Right Image */}
-            {right && (
-              <motion.div
-                key={`right-${currentIndex}`}
-                className="overflow-hidden rounded-2xl shadow-lg"
-                variants={rightVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                transition={transition}
-                style={{ height: "320px" }}
-              >
-                <img
-                  src={right.url}
-                  alt="Hero image right"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            )}
-          </div>
-        </div>
-      </div>
+      {/* Navigation Buttons */}
+      <button
+        onClick={handlePrev}
+        className="absolute top-1/2 left-2 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors"
+        aria-label="Previous image"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <button
+        onClick={handleNext}
+        className="absolute top-1/2 right-2 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-black/75 transition-colors"
+        aria-label="Next image"
+      >
+        <ChevronRight size={24} />
+      </button>
     </div>
   );
 };
 
-export default HeroImageCarousel;
+export default ImageCarousel;

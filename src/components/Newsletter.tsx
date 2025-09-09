@@ -8,13 +8,11 @@ const Newsletter = () => {
   const [email, setEmail] = useState("");
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(email);
+    // console.log(email);
   };
   return (
     <div>
-      <h3 className="text-lg font-semibold text-ecoware-primary mb-6">
-        Newsletter
-      </h3>
+      <h3 className="text-lg font-semibold text-ecoware-primary mb-6">Newsletter</h3>
       <form onSubmit={handleEmailSubmit} className="flex">
         <div className="flex-1">
           <Input

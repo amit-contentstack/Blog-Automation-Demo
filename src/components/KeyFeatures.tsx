@@ -11,7 +11,7 @@ const KeyFeatures: React.FC = async () => {
 
   const { title, feature_description, features } = keyFeaturesData;
 
-  console.log(keyFeaturesData);
+  // console.log(keyFeaturesData);
 
   return (
     <Section className="bg-ecoware-gray-light py-28">
@@ -26,9 +26,7 @@ const KeyFeatures: React.FC = async () => {
                 <div className="w-4 h-4 bg-ecoware-primary rounded-full"></div>
                 <div className="w-4 h-4 bg-ecoware-text-dark rounded-full"></div>
               </div>
-              <span className="text-ecoware-text-dark font-medium text-sm">
-                Our Work Process
-              </span>
+              <span className="text-ecoware-text-dark font-medium text-sm">Our Work Process</span>
             </div>
 
             {/* Main Title */}
@@ -39,9 +37,7 @@ const KeyFeatures: React.FC = async () => {
 
           {/* Description */}
           <div className="lg:pt-8">
-            <p className="text-lg text-ecoware-gray-dark leading-relaxed">
-              {feature_description}
-            </p>
+            <p className="text-lg text-ecoware-gray-dark leading-relaxed">{feature_description}</p>
           </div>
         </div>
 
@@ -76,12 +72,8 @@ const KeyFeatures: React.FC = async () => {
 
               {/* Step Banner */}
               <div className="bg-ecoware-primary px-8 py-4 flex items-center justify-between">
-                <span className="text-white font-semibold text-sm tracking-wide">
-                  STEP
-                </span>
-                <span className="text-ecoware-primary-accent font-bold text-lg">
-                  {index + 1}
-                </span>
+                <span className="text-white font-semibold text-sm tracking-wide">STEP</span>
+                <span className="text-ecoware-primary-accent font-bold text-lg">{index + 1}</span>
               </div>
             </div>
           ))}

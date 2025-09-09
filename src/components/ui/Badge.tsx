@@ -17,7 +17,7 @@ const Badge: React.FC<BadgeProps> = ({
     "inline-flex items-center justify-center font-medium rounded-full whitespace-nowrap";
 
   const variantStyles = {
-    primary: "bg-ecoware-primary text-ecoware-text-light",
+    primary: "bg-ecoware-primary text-ecoware-primary",
     secondary: "bg-ecoware-secondary text-white",
     outline: "border border-ecoware-primary bg-zinc-100 text-ecoware-primary",
   };

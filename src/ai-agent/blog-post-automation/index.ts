@@ -87,10 +87,6 @@ Please generate appropriate content for the selected platforms and use the publi
       messages,
     });
 
-    console.log("--------------------------------");
-    console.log("Result from LLM: ", result);
-    console.log("--------------------------------");
-
     return {
       success: true,
       data: {

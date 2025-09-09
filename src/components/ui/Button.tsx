@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantStyles = {
     primary:
-      "bg-ecoware-primary text-ecoware-text-light hover:bg-ecoware-primary-hover hover:scale-105 focus:ring-ecoware-primary",
+      "bg-ecoware-primary text-ecoware-primary hover:text-ecoware-primary-accent hover:bg-ecoware-primary-hover hover:scale-105 focus:ring-ecoware-primary",
     outline:
       "border-2 border-ecoware-primary bg-transparent text-ecoware-primary hover:bg-ecoware-primary hover:text-white focus:ring-ecoware-primary",
     underline:
