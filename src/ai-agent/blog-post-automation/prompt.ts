@@ -41,12 +41,12 @@ Structure:
 - Professional tone, but easy to understand
 - 2–3 short paragraphs or bullets to summarize blog insights
 - Include emojis sparingly for emphasis 🌍
-- Include direct blog link for click-through
+- Add a direct blog link for click-through [https://blog-automation-demo-default.contentstackapps.com/blog/(blogData.url)] where blogData.url is the URL of the blog
 
 Structure:
 1. Intro – Mention the blog title with authority
 2. Body – Summarize 2–3 key insights from the blog
-3. CTA – Drive traffic to the full blog
+3. CTA – Drive traffic to the full blog [https://blog-automation-demo-default.contentstackapps.com/blog/(blogData.url)] where blogData.url is the URL of the blog
 
 ## Important:
 - Always call the appropriate publishing tools after generating content

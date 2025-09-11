@@ -74,6 +74,7 @@ Blog Content: ${
             : JSON.stringify(blogData.blog_content)
         }
 Blog Image URL: ${blogData.feature_image.url}
+Blog URL: ${blogData.url}
 Selected Platforms: ${
           blogData.platforms_to_post
             ? JSON.stringify(blogData.platforms_to_post)
