@@ -4,7 +4,7 @@ import axios from "axios";
 import { createSocialPost } from "@/services/social-media-post";
 
 // Utility function to safely stringify objects with circular references
-const safeStringify = (obj: any): string => {
+const safeStringify = (obj: unknown): string => {
   const seen = new WeakSet();
   return JSON.stringify(obj, (key, value) => {
     if (typeof value === "object" && value !== null) {
