@@ -3,7 +3,7 @@ import { Container } from "./layout";
 import { Button, Badge } from "./ui";
 import Link from "next/link";
 import HeroImageCarousel from "./HeroImageCarousel";
-import stack from "@/utlis/contentstack-sdk";
+import stack from "@/utils/contentstack-sdk";
 
 const EcoWareHero: React.FC = async () => {
   const landingPageData = await stack

@@ -1,6 +1,6 @@
 import React from "react";
 import Badge from "../ui/Badge";
-import stack from "@/utlis/contentstack-sdk";
+import stack from "@/utils/contentstack-sdk";
 import { TagsField } from "@/types/entries";
 
 interface PopularTagsProps {

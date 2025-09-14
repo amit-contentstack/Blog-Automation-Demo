@@ -67,6 +67,7 @@ export default async function blogPostAutomation(blogData: Blog) {
         content: `Please generate and publish social media content for the following blog:
 
 Blog Title: ${blogData.title}
+Blog ID: ${blogData.uid}
 Blog Description: ${blogData.description}
 Blog Content: ${
           typeof blogData.blog_content === "string"

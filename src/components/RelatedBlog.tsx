@@ -1,4 +1,4 @@
-import stack from "@/utlis/contentstack-sdk";
+import stack from "@/utils/contentstack-sdk";
 import BlogCard from "./common/BlogCard";
 import { Blog, Blogs } from "@/types/entries";
 import { QueryOperation } from "@contentstack/delivery-sdk";

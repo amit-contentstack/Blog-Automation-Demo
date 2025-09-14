@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Section } from "./layout";
-import stack from "@/utlis/contentstack-sdk";
+import stack from "@/utils/contentstack-sdk";
 import { KeyFeatures as KeyFeaturesType } from "@/types/entries";
 
 const KeyFeatures: React.FC = async () => {

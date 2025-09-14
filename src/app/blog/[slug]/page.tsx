@@ -5,7 +5,7 @@ import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
 import Badge from "../../../components/ui/Badge";
 import Button from "../../../components/ui/Button";
-import stack from "@/utlis/contentstack-sdk";
+import stack from "@/utils/contentstack-sdk";
 import { Blog, Blogs } from "@/types/entries";
 import { QueryOperation } from "@contentstack/delivery-sdk";
 import RelatedBlog from "@/components/RelatedBlog";

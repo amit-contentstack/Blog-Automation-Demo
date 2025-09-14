@@ -114,3 +114,11 @@ export interface TagsField extends GlobalField {
     }
   ];
 }
+
+export interface SocialMediaPost {
+  title: string;
+  blog_id: [{ uid: string; _content_type_uid: string }];
+  platform_name: string;
+  post_content: string;
+  post_detail_json: string;
+}

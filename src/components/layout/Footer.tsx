@@ -5,17 +5,13 @@ import Button from "../ui/Button";
 
 import Image from "next/image";
 import Newsletter from "../Newsletter";
-import stack from "@/utlis/contentstack-sdk";
+import stack from "@/utils/contentstack-sdk";
 import { Footer as FooterType } from "@/types/entries";
 
 const Footer: React.FC = async () => {
-  const footer = await stack
-    .contentType("footer")
-    .entry("bltfc4e95f0d0a86780")
-    .fetch<FooterType>();
+  const footer = await stack.contentType("footer").entry("bltfc4e95f0d0a86780").fetch<FooterType>();
 
-  const { title, description, social_links, navigation_links, contact_info } =
-    footer;
+  const { title, description, social_links, navigation_links, contact_info } = footer;
 
   return (
     <footer className="bg-white py-28">
@@ -54,8 +50,7 @@ const Footer: React.FC = async () => {
                 />
               </div>
               <h3 className="text-2xl font-semibold text-ecoware-primary ml-2">
-                Ecoware Solutions{" "}
-                <span className="text-ecoware-primary-accent">.</span>
+                Ecoware Solutions <span className="text-ecoware-primary-accent">.</span>
               </h3>
             </div>
 
@@ -88,9 +83,7 @@ const Footer: React.FC = async () => {
           <div className="flex gap-16 flex-wrap ">
             {/* Navigation Section */}
             <div className="">
-              <h3 className="text-lg font-semibold text-ecoware-primary mb-6">
-                Navigation
-              </h3>
+              <h3 className="text-lg font-semibold text-ecoware-primary mb-6">Navigation</h3>
               <ul className="space-y-4">
                 {navigation_links.links.map((link) => (
                   <li key={link.link_title}>
@@ -108,9 +101,7 @@ const Footer: React.FC = async () => {
             {/* Contact Section */}
             <div className="">
               <div className="mb-8">
-                <h3 className="text-lg font-semibold text-ecoware-primary mb-6">
-                  Contact
-                </h3>
+                <h3 className="text-lg font-semibold text-ecoware-primary mb-6">Contact</h3>
                 <div className="space-y-3 text-zinc-400">
                   <p>{contact_info.details.email}</p>
                   <p>{contact_info.details.contact_number}</p>

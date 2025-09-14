@@ -5,7 +5,7 @@ import BlogCard from "../../components/common/BlogCard";
 import PopularTags from "../../components/common/PopularTags";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
-import stack from "@/utlis/contentstack-sdk";
+import stack from "@/utils/contentstack-sdk";
 import { Blog, Blogs } from "@/types/entries";
 
 // Next.js 15 App Router - Route Segment Config
